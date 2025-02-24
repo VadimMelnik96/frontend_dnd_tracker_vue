@@ -1,24 +1,27 @@
 body {
   margin: 0;
   font-family: 'MedievalSharp', cursive;
-  background: #f5e8c7;
+  background: #f5e8c7 url('https://www.transparenttextures.com/patterns/old-map.png') repeat;
 }
 
 .parchment-bg {
   min-height: 100vh;
-  padding: 0;
-  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  border: 5px solid #5a3e2b;
+  padding: 20px;
+  background: none;
+  border: none;
   box-sizing: border-box;
 }
 
 .navbar {
+  height: 64px;
   background: #5a3e2b;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px solid #3c2f2f;
+  position: relative;
+  overflow: visible;
 }
 
 .navbar-link {
@@ -33,6 +36,7 @@ body {
 }
 
 .navbar-links {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -76,11 +80,42 @@ body {
   max-width: 95%;
   width: 95%;
   margin: 20px auto;
-  padding: 20px;
-  background: rgba(255, 245, 220, 0.9);
-  border: 3px solid #5a3e2b;
-  border-radius: 10px;
-  overflow-x: auto;
+  padding: 40px;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat,
+              linear-gradient(to bottom, #f5e8c7, #e0d5a8);
+  border: 5px solid #5a3e2b;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.auth-container::before,
+.auth-container::after,
+.battle-hall-container::before,
+.battle-hall-container::after,
+.encounter-container::before,
+.encounter-container::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  width: 50px;
+  background: radial-gradient(circle, #5a3e2b 20%, transparent 70%);
+  z-index: -1;
+}
+
+.auth-container::before,
+.battle-hall-container::before,
+.encounter-container::before {
+  left: -30px;
+  transform: rotate(5deg);
+}
+
+.auth-container::after,
+.battle-hall-container::after,
+.encounter-container::after {
+  right: -30px;
+  transform: rotate(-5deg);
 }
 
 .medieval-input {
@@ -110,9 +145,10 @@ body {
 .encounter-table {
   width: 100%;
   border-collapse: collapse;
-  background: rgba(255, 245, 220, 0.8);
+  background: rgba(255, 245, 220, 0.9);
   margin-top: 20px;
   table-layout: auto;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .encounter-table th, .encounter-table td {
@@ -247,14 +283,19 @@ body {
   cursor: pointer;
   font-family: 'MedievalSharp', cursive;
   text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
 .wooden-btn:hover {
   background: #3c2f2f;
 }
 
+.wooden-btn:active {
+  animation: buttonPress 0.2s ease;
+}
+
 .active-turn {
-  background: rgba(139, 0, 0, 0.2);
+  background-color: rgba(139, 0, 0, 0.3);
 }
 
 .encounter-list {
@@ -290,6 +331,7 @@ body {
   padding: 20px;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
   z-index: 100;
+  animation: slideIn 0.5s ease-out;
 }
 
 .dice-roller h3 {
@@ -353,6 +395,54 @@ body {
   color: #ff0000;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.encounter-table tr {
+  cursor: move;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.encounter-table tr.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+  background-color: #f0e0d0;
+}
+
+.encounter-table tr.dragging td input,
+.encounter-table tr.dragging td button {
+  pointer-events: none;
+}
+
 @media (max-width: 600px) {
   .header-row {
     flex-direction: column;
@@ -393,19 +483,4 @@ body {
     width: 200px;
     padding: 10px;
   }
-}
-
-.encounter-table tr {
-  cursor: move; /* Показываем, что строка перетаскиваема */
-}
-
-.encounter-table td {
-  padding: 8px;
-  vertical-align: middle;
-}
-
-/* Отключаем перехват событий для вложенных элементов во время перетаскивания */
-.encounter-table tr.dragging td input,
-.encounter-table tr.dragging td button {
-  pointer-events: none;
 }
