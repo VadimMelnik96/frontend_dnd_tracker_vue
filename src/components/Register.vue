@@ -23,7 +23,7 @@
       <button type="submit" class="wooden-btn">Create</button>
     </form>
     <p>
-      Already have a scroll? <router-link to="/login">Login</router-link>
+      Already have a Battle Hall? <router-link to="/login">Login</router-link>
     </p>
   </div>
 </template>

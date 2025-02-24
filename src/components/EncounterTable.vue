@@ -50,7 +50,7 @@
               v-model.number="creature.initiative"
               @input="updateCreature(creature.id, 'initiative', $event.target.value)"
               class="medieval-input"
-              placeholder="Init."
+              placeholder="Initiative"
             />
           </td>
           <td>

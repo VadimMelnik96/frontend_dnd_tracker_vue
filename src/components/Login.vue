@@ -17,7 +17,7 @@
       <button type="submit" class="wooden-btn">Login</button>
     </form>
     <p>
-      No scroll yet? <router-link to="/register">Register</router-link>
+      No Battle Hall yet? <router-link to="/register">Register</router-link>
     </p>
   </div>
 </template>
