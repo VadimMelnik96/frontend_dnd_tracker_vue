@@ -1,0 +1,411 @@
+body {
+  margin: 0;
+  font-family: 'MedievalSharp', cursive;
+  background: #f5e8c7;
+}
+
+.parchment-bg {
+  min-height: 100vh;
+  padding: 0;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  border: 5px solid #5a3e2b;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background: #5a3e2b;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #3c2f2f;
+}
+
+.navbar-link {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-logout {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.landing-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.landing-text {
+  font-family: 'MedievalSharp', cursive;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.landing-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.medieval-title {
+  font-family: 'MedievalSharp', cursive;
+  color: #8b0000;
+  text-align: center;
+  text-shadow: 1px 1px 2px #fff;
+  margin: 0;
+}
+
+.auth-container, .battle-hall-container, .encounter-container {
+  max-width: 95%;
+  width: 95%;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 245, 220, 0.9);
+  border: 3px solid #5a3e2b;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.medieval-input {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid #5a3e2b;
+  font-family: 'MedievalSharp', cursive;
+  color: #333;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  min-height: 40px;
+}
+
+.create-encounter-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: 'MedievalSharp', cursive;
+  border: 1px solid #5a3e2b;
+  background: transparent;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.encounter-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 245, 220, 0.8);
+  margin-top: 20px;
+  table-layout: auto;
+}
+
+.encounter-table th, .encounter-table td {
+  border: 1px solid #5a3e2b;
+  padding: 8px;
+  text-align: center;
+  min-width: 100px;
+  min-height: 40px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.encounter-table th {
+  background: #5a3e2b;
+  color: #fff;
+}
+
+.encounter-table td input[type="number"],
+.encounter-table td input[type="text"] {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conditions-cell {
+  position: relative;
+  cursor: pointer;
+}
+
+.conditions-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.medieval-select {
+  width: 100%;
+  padding: 5px;
+  background: rgba(255, 245, 220, 0.9);
+  border: 1px solid #5a3e2b;
+  font-family: 'MedievalSharp', cursive;
+  color: #333;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.reset-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.actions-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  min-width: 150px;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.action-input {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  min-height: 40px;
+  padding: 8px;
+  font-size: 16px;
+  background: rgba(255, 245, 220, 0.9);
+  border: 1px solid #5a3e2b;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.delete-btn {
+  color: #8b0000;
+}
+
+.delete-btn:hover {
+  color: #ff0000;
+}
+
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  gap: 10px;
+}
+
+.encounter-notes {
+  font-family: 'MedievalSharp', cursive;
+  color: #333;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wooden-btn {
+  background: #5a3e2b;
+  color: #fff;
+  border: 2px solid #3c2f2f;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: 'MedievalSharp', cursive;
+  text-decoration: none;
+}
+
+.wooden-btn:hover {
+  background: #3c2f2f;
+}
+
+.active-turn {
+  background: rgba(139, 0, 0, 0.2);
+}
+
+.encounter-list {
+  list-style: none;
+  padding: 0;
+}
+
+.encounter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.medieval-link {
+  color: #8b0000;
+  text-decoration: none;
+}
+
+.medieval-link:hover {
+  text-decoration: underline;
+}
+
+.dice-roller {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 250px;
+  background: rgba(255, 245, 220, 0.9);
+  border: 3px solid #5a3e2b;
+  border-radius: 10px 0 0 10px;
+  padding: 20px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.dice-roller h3 {
+  margin: 0 0 20px;
+  color: #8b0000;
+  text-align: center;
+}
+
+.dice-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dice-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dice-row span {
+  font-size: 16px;
+  color: #333;
+}
+
+.dice-row button {
+  background: #5a3e2b;
+  color: #fff;
+  border: 1px solid #3c2f2f;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.dice-row button:hover {
+  background: #3c2f2f;
+}
+
+.roll-btn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.roll-results {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #8b0000;
+}
+
+.close-btn:hover {
+  color: #ff0000;
+}
+
+@media (max-width: 600px) {
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button-group {
+    justify-content: flex-start;
+  }
+
+  .medieval-title {
+    font-size: 24px;
+  }
+
+  .encounter-table th, .encounter-table td {
+    min-width: 60px;
+    padding: 4px;
+    min-height: 30px;
+  }
+
+  .actions-cell {
+    min-width: 120px;
+    min-height: 30px;
+  }
+
+  .action-btn {
+    min-height: 20px;
+  }
+
+  .action-input {
+    width: 60px;
+    min-height: 30px;
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .dice-roller {
+    width: 200px;
+    padding: 10px;
+  }
+}
+
+.encounter-table tr {
+  cursor: move; /* Показываем, что строка перетаскиваема */
+}
+
+.encounter-table td {
+  padding: 8px;
+  vertical-align: middle;
+}
+
+/* Отключаем перехват событий для вложенных элементов во время перетаскивания */
+.encounter-table tr.dragging td input,
+.encounter-table tr.dragging td button {
+  pointer-events: none;
+}
